@@ -197,6 +197,9 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         showLogin ? 
         ListView(
           children: <Widget>[
+              SizedBox(
+                height: 100,
+              ),
               _logo('Sign in to continue'),
               _logInForm('Log In', _loginUser) 
           ]
