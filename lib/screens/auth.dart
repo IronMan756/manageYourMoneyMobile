@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthorizationScreen extends StatefulWidget {
-  AuthorizationScreen({Key key}) : super(key: key);
+  const AuthorizationScreen({Key key}) : super(key: key);
 
   @override
   _AuthorizationScreenState createState() => _AuthorizationScreenState();
 }
 
 class _AuthorizationScreenState extends State<AuthorizationScreen> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _cpasswordController = TextEditingController();
-  TextEditingController _loginController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _cpasswordController = TextEditingController();
+  final TextEditingController _loginController = TextEditingController();
 
   String _email;
   String _password;
@@ -24,54 +24,52 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
   Widget build(BuildContext context) {
     Widget _logo(String logo) {
       return  Padding(
-          padding: EdgeInsets.only(top: 50, bottom: 20),
-          child: Container(
-            child: Align(
-                child: Text(
-              logo,
-              style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-            )),
-          ));
+          padding: const EdgeInsets.only(top: 50, bottom: 20),
+          child: Align(
+              child: Text(
+            logo,
+            style: const TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+          )));
     }
 
     Widget _input(Icon icon, String hint, TextEditingController controller,
         bool obscure) {
       return Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20,),
           child: TextField(
               controller: controller,
               obscureText: obscure,
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
               decoration: InputDecoration(
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                       color: Colors.black38),
                   hintText: hint,
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue, width: 3)),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                         width: 0.01),
                   ),
                   prefixIcon: Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: IconTheme(
-                          data: IconThemeData(
-                            color: Color.fromRGBO(0, 0, 0, 0.85),
+                          data: const IconThemeData(
+                            color:  Color.fromRGBO(0, 0, 0, 0.85),
                           ),
                           child: icon)))));
     }
 
-    Widget _button(String text, void func()) {
+    Widget _button(String text, void Function() func) {
       return RaisedButton(
         onPressed: func,
-        disabledTextColor: Color.fromRGBO(0, 0, 0, 0.85),
-        splashColor: Color.fromRGBO(0, 0, 0, 0.4),
+        disabledTextColor: const Color.fromRGBO(0, 0, 0, 0.85),
+        splashColor: const Color.fromRGBO(0, 0, 0, 0.4),
         color: Colors.white,
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -79,83 +77,83 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       );
     }
 
-    Widget _logInForm(String label, void func()) {
-      return Container(
-          child: Column(children: <Widget>[
+    Widget _logInForm(String label, void Function() func) {
+      return Column(children: <Widget>[
         Padding(
-            padding: EdgeInsets.only(bottom: 20, top: 10),
-            child: _input(Icon(Icons.email), 'Email', _emailController, false)),
+        padding: const EdgeInsets.only(bottom: 20, top: 10),
+        child: _input(const Icon(Icons.email), 'Email', _emailController, false)),
         Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: _input(
-                Icon(Icons.lock), 'Password', _passwordController, true)),
-        SizedBox(height: 20),
+        padding: const EdgeInsets.only(bottom: 20),
+        child: _input(
+            const Icon(Icons.lock), 'Password', _passwordController, true)),
+        const SizedBox(height: 20),
         Padding(
-            padding: EdgeInsets.only(left: 20, right: 20),
-            child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: _button(label, func))),
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            child: _button(label, func))),
         Padding(
-            padding: EdgeInsets.only(top: 50),
-            child: GestureDetector(
-              child: Text(
-                'Dont have an account? Sign up !',
-                style: TextStyle(
-                  fontSize: 15,color: Colors.blue
-                ),
-              ), 
-              onTap : (){
-                setState((){
-                    showLogin = false;
-                  });
-              }
-            )
+        padding: const EdgeInsets.only(top: 50),
+        child: GestureDetector(
+            onTap : (){
+            setState((){
+                showLogin = false;
+              });
+          },
+           child: const Text(
+            'Dont have an account? Sign up !',
+            style: TextStyle(
+              fontSize: 15,color: Colors.blue
+            ),
+          ), 
+        
         )
-      ]));
+        )
+      ]);
     };
 
-    Widget _signUpForm(String label, void func()) {
-      return Container(
-          child: Column(children: <Widget>[
+    Widget _signUpForm(String label, void Function() func) {
+      return Column(children: <Widget>[
         Padding(
-            padding: EdgeInsets.only(bottom: 20, top: 10),
-            child: _input(Icon(Icons.person ), 'Login', _loginController, false)),
+        padding: const EdgeInsets.only(bottom: 20, top: 10),
+        child: _input(const Icon(Icons.person ), 'Login', _loginController, false)),
         Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: _input(Icon(Icons.email), 'Email', _emailController, false)),
+        padding: const EdgeInsets.only(bottom: 20),
+        child: _input(const Icon(Icons.email), 'Email', _emailController, false)),
         Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: _input(
-                Icon(Icons.lock), 'Password', _passwordController, true)),
+        padding: const EdgeInsets.only(bottom: 20),
+        child: _input(
+            const Icon(Icons.lock), 'Password', _passwordController, true)),
         Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: _input(
-                Icon(Icons.lock), 'Confirm password', _cpasswordController, true)),
-        SizedBox(height: 20),
+        padding: const EdgeInsets.only(bottom: 20),
+        child: _input(
+            const Icon(Icons.lock), 'Confirm password', _cpasswordController, true)),
+        const SizedBox(height: 20),
         Padding(
-            padding: EdgeInsets.only(left: 20, right: 20),
-            child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: _button(label, func))),
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            child: _button(label, func))),
         Padding(
-            padding: EdgeInsets.only(top: 50),
-            child: GestureDetector(
-              child: Text(
-                'Already have an account? Sign in !',
-                style: TextStyle(
-                  fontSize: 15,color: Colors.blue
-                ),
-              ), 
-              onTap : (){
-                setState((){
-                    showLogin = true;
-                  });
-              }
-            )
+        padding: const EdgeInsets.only(top: 50),
+        child: GestureDetector(
+           onTap : (){
+            setState((){
+                showLogin = true;
+              });
+          },
+          child: const Text(
+            'Already have an account? Sign in !',
+          style: TextStyle(
+              fontSize: 15,color: Colors.blue
+            ),
+          ), 
+         
+        )
         )        
-      ]));
+      ]);
     }
 
 
@@ -197,8 +195,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         showLogin ? 
         ListView(
           children: <Widget>[
-              SizedBox(
-                height: 100,
+              const SizedBox(
+                height: 120,
               ),
               _logo('Sign in to continue'),
               _logInForm('Log In', _loginUser) 
@@ -207,6 +205,9 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         :
         ListView(
           children: <Widget>[
+             const SizedBox(
+                height: 50,
+              ),
             _logo('Sign up to continue'),
             _signUpForm('Sign Up', _signUpUser)
         ]
