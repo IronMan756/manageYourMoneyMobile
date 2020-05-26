@@ -196,7 +196,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         ListView(
           children: <Widget>[
               const SizedBox(
-                height: 100,
+                height: 120,
               ),
               _logo('Sign in to continue'),
               _logInForm('Log In', _loginUser) 
@@ -206,7 +206,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         ListView(
           children: <Widget>[
              const SizedBox(
-                height: 65,
+                height: 50,
               ),
             _logo('Sign up to continue'),
             _signUpForm('Sign Up', _signUpUser)
