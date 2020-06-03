@@ -6,10 +6,11 @@ import 'package:manageYourMoneyMobile/screens/auth.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key key}) : super(key: key);
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -17,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-     SystemChrome.setPreferredOrientations([
+     SystemChrome.setPreferredOrientations(< DeviceOrientation>[
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
