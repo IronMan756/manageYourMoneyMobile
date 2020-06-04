@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:manageYourMoneyMobile/common/services/auth.service.dart';
 
 class AuthorizationScreen extends StatefulWidget {
   const AuthorizationScreen({Key key}) : super(key: key);
@@ -111,7 +112,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         )
         )
       ]);
-    };
+    }
 
     Widget _signUpForm(String label, void Function() func) {
       return Column(children: <Widget>[
@@ -162,9 +163,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     void _loginUser() {
       _email = _emailController.text;
       _password = _passwordController.text;
-      print( _email );
-      print(_password);
 
+  print( logIn(_email,_password));
       _emailController.clear();
       _passwordController.clear();
     }
@@ -174,13 +174,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       _email = _emailController.text;
       _password = _passwordController.text;
       _cpassword = _cpasswordController.text;
-
-      print(_login);
-      print(_email);
-      print(_password);
-      print(_cpassword);
-      
-
+    signUp(_login, _email,_cpassword);
       _emailController.clear();
       _loginController.clear();
       _passwordController.clear();
