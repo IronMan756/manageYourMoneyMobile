@@ -163,9 +163,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     void _loginUser() {
       _email = _emailController.text;
       _password = _passwordController.text;
-      print( _email );
-      print(_password);
 
+  print( logIn(_email,_password));
       _emailController.clear();
       _passwordController.clear();
     }
@@ -175,9 +174,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       _email = _emailController.text;
       _password = _passwordController.text;
       _cpassword = _cpasswordController.text;
-
-      
-      signUp(_login, _email,_cpassword);
+    signUp(_login, _email,_cpassword);
       _emailController.clear();
       _loginController.clear();
       _passwordController.clear();
