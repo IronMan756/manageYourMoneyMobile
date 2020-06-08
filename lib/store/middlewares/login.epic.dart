@@ -12,7 +12,6 @@ Stream<dynamic> loginEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
                   );
 }
 Stream<dynamic> signUpEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
-  print('xuy');
   return actions.where((dynamic action) => action is SignUpPending) .switchMap(
       (dynamic action) =>
           Stream<dynamic>.fromFuture(signUp(action as SignUpPending)).expand(

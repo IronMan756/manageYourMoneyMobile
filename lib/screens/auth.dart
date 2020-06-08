@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:manageYourMoneyMobile/common/services/auth.service.dart';
+// import 'package:manageYourMoneyMobile/common/services/auth.service.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
@@ -183,7 +183,6 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       _email = _emailController.text;
       _password = _passwordController.text;
       _cpassword = _cpasswordController.text;
-    // signUp(_login, _email,_cpassword);
       store.dispatch(SignUpPending(_login, _email,_cpassword));
       _emailController.clear();
       _loginController.clear();

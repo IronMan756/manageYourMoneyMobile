@@ -23,7 +23,6 @@ Future<dynamic> signUp(SignUpPending action) async {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(body));
     if (response.statusCode == 200) {
-      print(json.decode(response.body));
       return json.decode(response.body);
     } else if (response.statusCode == 404) {
       toaster.show(
@@ -41,7 +40,6 @@ Future<dynamic> signUp(SignUpPending action) async {
 }
 
 Future<dynamic> logIn(LoginPending action) async {
-  print('logIn service');
   try {
     final Map<String, dynamic> body = {'email': action.email, 'password': action.password};
     final http.Response response = await http.post(
@@ -49,7 +47,6 @@ Future<dynamic> logIn(LoginPending action) async {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(body));
     if (response.statusCode == 200) {
-      print(json.decode(response.body));
       return json.decode(response.body);
     } else if (response.statusCode == 409) {
       toaster.show(message: 'Incorrect Email or Password', color: Colors.red);
