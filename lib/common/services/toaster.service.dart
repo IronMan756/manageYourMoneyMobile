@@ -7,10 +7,10 @@ class _Toaster {
   void show({@required String message, @required Color color}) {
     Fluttertoast.showToast(
       msg: message,
-      gravity: ToastGravity.TOP,
+      gravity: ToastGravity.CENTER,
       textColor: Colors.black,
       backgroundColor: color,
-      timeInSecForIos: 5,
+      timeInSecForIos: 2,
       toastLength: Toast.LENGTH_LONG,
     );
   }

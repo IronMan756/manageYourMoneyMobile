@@ -104,6 +104,12 @@
       "languageVersion": "2.8"
     },
     {
+      "name": "logging",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.6",
       "packageUri": "lib/",
@@ -128,10 +134,28 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "permission_handler",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-5.0.0+hotfix.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "permission_handler_platform_interface",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
       "name": "petitparser",
       "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.4"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "quiver",
@@ -144,6 +168,36 @@
       "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/redux-4.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "redux_epics",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/redux_epics-0.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "redux_heaven",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/redux_heaven-0.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "redux_logging",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/redux_logging-0.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "redux_navigator",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/redux_navigator-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "rxdart",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/rxdart-0.23.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "shared_preferences",
@@ -218,7 +272,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-06-04T16:20:40.404601Z",
+  "generated": "2020-06-08T13:03:30.408853Z",
   "generator": "pub",
   "generatorVersion": "2.8.2"
 }
