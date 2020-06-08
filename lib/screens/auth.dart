@@ -1,5 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:manageYourMoneyMobile/common/services/auth.service.dart';
+import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
+import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
+import 'package:manageYourMoneyMobile/store/store.dart';
+import 'package:redux/redux.dart';
+
+class _ViewModel {
+  _ViewModel({this.isLoading});
+  bool isLoading;
+}
 
 class AuthorizationScreen extends StatefulWidget {
   const AuthorizationScreen({Key key}) : super(key: key);
@@ -111,7 +122,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         )
         )
       ]);
-    };
+    }
 
     Widget _signUpForm(String label, void Function() func) {
       return Column(children: <Widget>[
@@ -162,9 +173,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     void _loginUser() {
       _email = _emailController.text;
       _password = _passwordController.text;
-      print( _email );
-      print(_password);
-
+       store.dispatch(LoginPending(_email,_password ));
       _emailController.clear();
       _passwordController.clear();
     }
@@ -174,20 +183,19 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       _email = _emailController.text;
       _password = _passwordController.text;
       _cpassword = _cpasswordController.text;
-
-      print(_login);
-      print(_email);
-      print(_password);
-      print(_cpassword);
-      
-
+    // signUp(_login, _email,_cpassword);
+      store.dispatch(SignUpPending(_login, _email,_cpassword));
       _emailController.clear();
       _loginController.clear();
       _passwordController.clear();
       _cpasswordController.clear();
     }
 
-    return Scaffold(
+    return StoreConnector<AppState, _ViewModel>(
+        converter: (Store<AppState> store) => _ViewModel(
+            ),
+        builder: (BuildContext context, _ViewModel state) {
+          return Scaffold(
         backgroundColor: Colors.white,
         body: Container(
           child: 
@@ -212,4 +220,6 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
             _signUpForm('Sign Up', _signUpUser)
         ]
         )));
-  }}
+    });
+  }
+}
