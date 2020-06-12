@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-// import 'package:manageYourMoneyMobile/common/services/auth.service.dart';
+import 'package:manageYourMoneyMobile/common/widgets/loginForm.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
@@ -44,10 +44,10 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     }
 
     Widget _input(Icon icon, String hint, TextEditingController controller,
-        bool obscure) {
+        bool obscure ) {
       return Container(
           padding: const EdgeInsets.only(left: 20, right: 20,),
-          child: TextField(
+          child: TextFormField(
               controller: controller,
               obscureText: obscure,
               style: const TextStyle(fontSize: 20, color: Colors.black),
@@ -89,14 +89,23 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     }
 
     Widget _logInForm(String label, void Function() func) {
+
+   
       return Column(children: <Widget>[
         Padding(
         padding: const EdgeInsets.only(bottom: 20, top: 10),
-        child: _input(const Icon(Icons.email), 'Email', _emailController, false)),
+        child: _input(
+          const Icon(Icons.email),
+          'Email', _emailController,
+          false
+        )),    
         Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: _input(
-            const Icon(Icons.lock), 'Password', _passwordController, true)),
+            const Icon(Icons.lock), 'Password', _passwordController, true,
+            // (String value) => validators.validateIsEmpty(
+            //               value, 'Please enter Password'),
+            )),
         const SizedBox(height: 20),
         Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
@@ -128,7 +137,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       return Column(children: <Widget>[
         Padding(
         padding: const EdgeInsets.only(bottom: 20, top: 10),
-        child: _input(const Icon(Icons.person ), 'Login', _loginController, false)),
+        child:
+        _input(const Icon(Icons.person ), 'Login', _loginController, false)),
         Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: _input(const Icon(Icons.email), 'Email', _emailController, false)),
@@ -207,6 +217,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
               ),
               _logo('Sign in to continue'),
               _logInForm('Log In', _loginUser) 
+              // const LogInForm()
           ]
         )
         :
