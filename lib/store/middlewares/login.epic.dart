@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:manageYourMoneyMobile/common/services/auth.service.dart';
+import 'package:manageYourMoneyMobile/screens/auth.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:redux_epics/redux_epics.dart';
+import 'package:redux_navigator/redux_navigator.dart';
 import 'package:rxdart/rxdart.dart';
 
 Stream<dynamic> loginEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
@@ -16,6 +19,10 @@ Stream<dynamic> signUpEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
       (dynamic action) =>
           Stream<dynamic>.fromFuture(signUp(action as SignUpPending)).expand(
               (dynamic token) =>
-                  <dynamic>[ SignUpSuccess()])
+                  <dynamic>[ SignUpSuccess(), 
+                  PushReplacementAction(MaterialPageRoute<void>(
+                  builder: (BuildContext context) =>
+                      const AuthorizationScreen()))
+                  ])
                   );
 }
