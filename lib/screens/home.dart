@@ -34,7 +34,6 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
         body: _children[_selectedIndex],
         drawer: AppDrawer(),
         drawerEnableOpenDragGesture: true,
-        // const Center(child: Text('HomeScreen')),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
