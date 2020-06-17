@@ -24,15 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-// void _openDrawer() {
-//   _scaffoldKey.currentState.openDrawer();
-// }
-
-// void _closeDrawer() {
-//   Navigator.of(context).pop();
-// }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
