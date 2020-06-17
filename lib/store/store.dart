@@ -20,6 +20,7 @@ final Store<AppState> store = Store<AppState>(appStateReducer,
       LoggingMiddleware<dynamic>.printer(),
       loginMiddleware,
       signupMiddleware
+      
       // getUserDedailsMiddleware
 
     ]);
