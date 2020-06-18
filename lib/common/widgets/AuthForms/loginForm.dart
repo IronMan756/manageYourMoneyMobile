@@ -29,7 +29,6 @@ class LogInFormState extends State<LogInForm> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.title);
     return Form(
         key: _formKey,
         child: Container(
