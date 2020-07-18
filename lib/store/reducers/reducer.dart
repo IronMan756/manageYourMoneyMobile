@@ -5,7 +5,7 @@ import 'package:manageYourMoneyMobile/store/reducers/pursesReducer.reducer.dart'
 class AppState {
   AppState({this.purses});
 
-  dynamic purses;
+  List<PurseModel> purses;
 }
 
 AppState appStateReducer(AppState state, dynamic action) => AppState(

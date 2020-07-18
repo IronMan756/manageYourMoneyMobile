@@ -1,8 +1,10 @@
+import 'package:manageYourMoneyMobile/store/models/purse.model.dart';
+
 class GetPursesPending {}
 
 class GetPursesSuccess {
   GetPursesSuccess(this.purses);
-  dynamic purses;
+  List<PurseModel> purses;
 }
 
 class Purse {

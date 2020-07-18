@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 
 class PurseModel {
   PurseModel({
-    @required this.idUser,
-    @required this.name,
-    @required this.categoryId,
+    this.idUser,
+    this.name,
+    this.categoryId,
     this.balance,
   });
   final String idUser;
@@ -12,13 +12,22 @@ class PurseModel {
   final String categoryId;
   final int balance;
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap(Map<String, dynamic> json) {
     return <String, dynamic>{
       'idUser': idUser,
       'name': name,
       'categoryId': categoryId,
       'balance': balance
     };
+  }
+
+  factory PurseModel.fromJson(Map<String, dynamic> json) {
+    return PurseModel(
+      idUser: json['idUser'].toString(),
+      name: json['name'].toString(),
+      categoryId: json['categoryId'].toString(),
+      balance: json['balance'] as int,
+    );
   }
 
   static PurseModel fromMap(Map<String, dynamic> map, String documentId) {
