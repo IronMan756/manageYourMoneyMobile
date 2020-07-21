@@ -21,6 +21,7 @@ class PurseModel {
     };
   }
 
+  // ignore: sort_constructors_first
   factory PurseModel.fromJson(Map<String, dynamic> json) {
     return PurseModel(
       idUser: json['idUser'].toString(),
@@ -30,7 +31,7 @@ class PurseModel {
     );
   }
 
-  static PurseModel fromMap(Map<String, dynamic> map, String documentId) {
+  static PurseModel fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
     return PurseModel(
         idUser: map['idUser'].toString(),
