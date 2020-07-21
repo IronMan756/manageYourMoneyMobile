@@ -23,7 +23,6 @@ Future<dynamic> signUp(SignUpPending action) async {
         '${getBaseApiURL()}auth/sign-up',
         headers: {'Content-Type': 'application/json'},
         body: json.encode(body));
-        print('it is auth service');
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else if (response.statusCode == 404) {
@@ -44,8 +43,7 @@ Future<dynamic> signUp(SignUpPending action) async {
 }
 
 Future<dynamic> logIn(LoginPending action) async {
-    print('1345549878984565');
-     print(action.email);
+  
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final Map<String, dynamic> body = {
@@ -71,9 +69,7 @@ Future<dynamic> logIn(LoginPending action) async {
       throw Exception('Failed to getting lotItems ');
     }
   } catch (e) {
-    print(e);
     toaster.show(
-      
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;
   }
