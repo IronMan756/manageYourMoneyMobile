@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             primaryColor: Colors.white,
             textTheme: const TextTheme(
                 title: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.85))),
-            // visualDensity: VisualDensity.adaptivePlatformDensity,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           navigatorKey: navigatorKey,
           home: const AuthorizationScreen(),
