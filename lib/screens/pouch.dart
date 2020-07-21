@@ -33,14 +33,19 @@ class _PouchScreenState extends State<PouchScreen> {
         converter: (Store<AppState> store) =>
             _ViewModel(purses: store.state.purses),
         builder: (BuildContext context, _ViewModel state) {
-          // print(state.purses.toList().length);
-          return Scaffold(body: null
-              // ListView.builder(
-              //     itemCount: 1,
-              //     itemBuilder: (BuildContext ctxt, int index) {
-              //       return Text(state.purses[index].balance.toString());
-              //     })
-              );
+          print(state.purses.map((i) => {i.name, i.balance}));
+          return Scaffold(
+              body: ListView.builder(
+                  itemCount: state.purses.toList().length,
+                  itemBuilder: (BuildContext ctxt, int index) {
+                    return Container(
+                        child: Column(
+                      children: <Widget>[
+                        Text(state.purses[index].name.toString()),
+                        Text(state.purses[index].balance.toString())
+                      ],
+                    ));
+                  }));
         });
   }
 }
