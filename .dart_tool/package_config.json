@@ -135,13 +135,13 @@
     },
     {
       "name": "permission_handler",
-      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-5.0.0+hotfix.8",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-5.0.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
       "name": "permission_handler_platform_interface",
-      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-2.0.0",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.6"
     },
@@ -272,7 +272,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-06-15T16:47:28.614086Z",
+  "generated": "2020-07-22T07:18:38.165224Z",
   "generator": "pub",
   "generatorVersion": "2.8.2"
 }
