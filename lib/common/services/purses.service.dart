@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:manageYourMoneyMobile/common/services/toaster.service.dart';
 import 'package:http/http.dart' as http;
 import 'package:manageYourMoneyMobile/common/constants/config.dart';
+import 'package:manageYourMoneyMobile/store/models/purse.model.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,13 +20,11 @@ Future<List<PurseModel>> getPurses() async {
       'Authorization': 'Bearer $token',
     });
     if (response.statusCode == 200) {
-      // print(json.decode(response.body)['data']);
-
-      final Map<String, dynamic> data =
-          // ignore: always_specify_types
-          (json.decode(response.body) as Map)['data'] as Map<String, dynamic>;
-      print(data);
-      return [PurseModel()];
+      return json
+          .decode(response.body)['data']
+          .map<PurseModel>((dynamic item) =>
+              PurseModel.fromJson(item as Map<String, dynamic>))
+          .toList() as List<PurseModel>;
     }
   } catch (e) {
     print(e);
