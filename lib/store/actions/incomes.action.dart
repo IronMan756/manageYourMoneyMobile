@@ -4,8 +4,8 @@ import 'package:manageYourMoneyMobile/store/models/income.model.dart';
 class GetIncomesPending {}
 
 class GetIncomesSuccess {
-  GetIncomesSuccess(this.purses);
-  List<IncomeModel> purses;
+  GetIncomesSuccess(this.incomes);
+  List<IncomeModel> incomes;
 }
 
 class Income {
