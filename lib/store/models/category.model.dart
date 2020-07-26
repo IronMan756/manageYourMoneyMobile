@@ -1,5 +1,5 @@
-class PurseModel {
-  PurseModel({
+class CategoryModel {
+  CategoryModel({
     this.img,
     this.name,
     this.description,
@@ -17,8 +17,8 @@ class PurseModel {
   }
 
   // ignore: sort_constructors_first
-  factory PurseModel.fromJson(Map<String, dynamic> json) {
-    return PurseModel(
+  factory CategoryModel.fromJson(Map<String, dynamic> json) {
+    return CategoryModel(
       img: json['img'].toString(),
       name: json['name'].toString(),
       description: json['description'].toString(),
@@ -26,9 +26,9 @@ class PurseModel {
   }
 
   // ignore: prefer_constructors_over_static_methods
-  static PurseModel fromMap(Map<String, dynamic> map) {
+  static CategoryModel fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-    return PurseModel(
+    return CategoryModel(
         img: map['img'].toString(),
         name: map['name'].toString(),
         description: map['description'].toString());
