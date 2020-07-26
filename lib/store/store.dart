@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:manageYourMoneyMobile/store/middlewares/categories.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/expences.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/incomes.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/login.epic.dart';
@@ -17,6 +18,8 @@ EpicMiddleware<dynamic> getIncomesMiddleware =
     EpicMiddleware<dynamic>(getIncomesEpic);
 EpicMiddleware<dynamic> getExpencesMiddleware =
     EpicMiddleware<dynamic>(getExpencesEpic);
+EpicMiddleware<dynamic> getCategoriesMiddleware =
+    EpicMiddleware<dynamic>(getCategoriesEpic);
 // EpicMiddleware <dynamic>getUserDedailsMiddleware = EpicMiddleware<dynamic>(getUserDedailsEpic);
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final Store<AppState> store =
@@ -27,7 +30,8 @@ final Store<AppState> store =
   signupMiddleware,
   getPursesMiddleware,
   getIncomesMiddleware,
-  getExpencesMiddleware
+  getExpencesMiddleware,
+  getCategoriesMiddleware
 
   // getUserDedailsMiddleware
 ]);
