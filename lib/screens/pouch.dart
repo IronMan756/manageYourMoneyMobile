@@ -38,7 +38,8 @@ class _PouchScreenState extends State<PouchScreen> {
               body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
-                itemCount: state.purses.toList().length,
+                itemCount:
+                    state.purses != null ? state.purses.toList().length : 0,
                 itemBuilder: (BuildContext ctxt, int index) {
                   return Container(
                       margin: const EdgeInsets.all(10),
