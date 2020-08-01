@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:manageYourMoneyMobile/store/actions/categories.action.dart';
 import 'package:manageYourMoneyMobile/store/actions/incomes.action.dart';
+import 'package:manageYourMoneyMobile/store/actions/transactions.action.dart';
+import 'package:manageYourMoneyMobile/store/models/category.model.dart';
 import 'package:manageYourMoneyMobile/store/models/income.model.dart';
+import 'package:manageYourMoneyMobile/store/models/transaction.model.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
 import 'package:redux/redux.dart';

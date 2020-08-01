@@ -12,7 +12,7 @@ Future<List<CategoryModel>> getCategories() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('access_token');
     final http.Response response =
-        await http.get('${getBaseApiURL()}expences', headers: {
+        await http.get('${getBaseApiURL()}categories', headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',

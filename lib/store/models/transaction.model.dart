@@ -18,7 +18,7 @@ class TransactionModel {
   final String categoryId;
   final String expenceId;
   final int suma;
-  final DataCell data;
+  final String data;
   final String name;
   final String description;
 
@@ -45,7 +45,7 @@ class TransactionModel {
       categoryId: json['categoryId'].toString(),
       expenceId: json['expenceId'].toString(),
       suma: json['suma'] as int,
-      data: json['data'] as DataCell,
+      data: json['data'].toString(),
       name: json['name'].toString(),
       description: json['description'].toString(),
     );
@@ -60,7 +60,7 @@ class TransactionModel {
         categoryId: map['categoryId'].toString(),
         expenceId: map['expenceId'].toString(),
         suma: map['suma'] as int,
-        data: map['data'] as DataCell,
+        data: map['data'].toString(),
         name: map['name'].toString(),
         description: map['description'].toString());
   }

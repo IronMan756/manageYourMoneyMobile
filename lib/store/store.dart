@@ -4,6 +4,7 @@ import 'package:manageYourMoneyMobile/store/middlewares/expences.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/incomes.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/login.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/purses.epic.dart';
+import 'package:manageYourMoneyMobile/store/middlewares/transaction.epic.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
@@ -20,6 +21,8 @@ EpicMiddleware<dynamic> getExpencesMiddleware =
     EpicMiddleware<dynamic>(getExpencesEpic);
 EpicMiddleware<dynamic> getCategoriesMiddleware =
     EpicMiddleware<dynamic>(getCategoriesEpic);
+EpicMiddleware<dynamic> getTransactionsMiddleware =
+    EpicMiddleware<dynamic>(getTransactionsEpic);
 // EpicMiddleware <dynamic>getUserDedailsMiddleware = EpicMiddleware<dynamic>(getUserDedailsEpic);
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final Store<AppState> store =
@@ -31,7 +34,8 @@ final Store<AppState> store =
   getPursesMiddleware,
   getIncomesMiddleware,
   getExpencesMiddleware,
-  getCategoriesMiddleware
+  getCategoriesMiddleware,
+  getTransactionsMiddleware
 
   // getUserDedailsMiddleware
 ]);
