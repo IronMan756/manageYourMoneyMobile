@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:manageYourMoneyMobile/common/widgets/expences/expense-item.widget.dart';
 import 'package:manageYourMoneyMobile/store/actions/expences.action.dart';
 import 'package:manageYourMoneyMobile/store/models/expence.model.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
@@ -25,7 +26,6 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     store.dispatch(GetExpencesPending());
-    print(store.state.expences);
     return StoreConnector<AppState, _ViewModel>(
         converter: (Store<AppState> store) =>
             _ViewModel(expences: store.state.expences),
@@ -38,18 +38,18 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                     state.expences != null ? state.expences.toList().length : 0,
                 itemBuilder: (BuildContext ctxt, int index) {
                   return Container(
-                      margin: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(state.expences[index].name.toString()),
-                              // Text(':'),
-                              // Text(state.incomes[index].balance.toString())
-                            ],
-                          )
+                          ExpenseItemWidget(
+                              expenseName: state.expences[index].name,
+                              balance: state.expences[index].suma,
+                              expenseDate: state.expences[index].date,
+                              description: state.expences[index].description),
+                          // const SizedBox(
+                          //   height: 10,
+                          // ),
                         ],
                       ));
                 }),
