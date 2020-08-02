@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
-
 class ExpenceModel {
   ExpenceModel(
       {this.userId,
       this.purseId,
       this.suma,
-      this.data,
+      this.date,
       this.name,
       this.description});
   final String userId;
   final String purseId;
   final int suma;
-  final DataCell data;
+  final String date;
   final String name;
   final String description;
 
@@ -20,7 +18,7 @@ class ExpenceModel {
       'userId': userId,
       'purseId': purseId,
       'suma': suma,
-      'data': data,
+      'date': date,
       'name': name,
       'description': description
     };
@@ -31,7 +29,7 @@ class ExpenceModel {
     return ExpenceModel(
       userId: json['userId'].toString(),
       purseId: json['purseId'].toString(),
-      data: json['data'] as DataCell,
+      date: json['data'].toString(),
       suma: json['suma'] as int,
       name: json['name'].toString(),
       description: json['description'].toString(),
@@ -43,7 +41,7 @@ class ExpenceModel {
     return ExpenceModel(
         userId: map['userId'].toString(),
         purseId: map['purseId'].toString(),
-        data: map['data'] as DataCell,
+        date: map['data'].toString(),
         suma: map['suma'] as int,
         name: map['name'].toString(),
         description: map['description'].toString());

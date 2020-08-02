@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:manageYourMoneyMobile/common/widgets/AuthForms/authInput.dart';
+import 'package:manageYourMoneyMobile/common/widgets/auth-forms/authInput.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
 
@@ -44,12 +43,12 @@ class SignUpFormState extends State<SignUpForm> {
                         fontSize: 27, fontWeight: FontWeight.bold),
                   )),
                   AuthInput(
-                    icon: Icon(Icons.person),
-                    myController: _loginController,
-                    obscureText: false,
-                    hint: 'Login',
-                    validator: (String value) => validators.validateIsEmpty(value, 'Please enter login')
-                  ),
+                      icon: Icon(Icons.person),
+                      myController: _loginController,
+                      obscureText: false,
+                      hint: 'Login',
+                      validator: (String value) => validators.validateIsEmpty(
+                          value, 'Please enter login')),
                   AuthInput(
                     icon: Icon(Icons.email),
                     obscureText: false,
@@ -70,11 +69,13 @@ class SignUpFormState extends State<SignUpForm> {
                       obscureText: true,
                       myController: _cpasswordController,
                       hint: 'Password',
-                      validator: (String value) => validators.compareValidate(value, _passwordController, 'Both passwords should be equal')
-                          ),
+                      validator: (String value) => validators.compareValidate(
+                          value,
+                          _passwordController,
+                          'Both passwords should be equal')),
                   Center(
                       child: _button('Sign up', () {
-                    if (_formKey.currentState.validate() ) {
+                    if (_formKey.currentState.validate()) {
                       _signUpUser();
                     }
                   }))

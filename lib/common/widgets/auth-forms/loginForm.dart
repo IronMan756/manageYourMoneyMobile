@@ -1,19 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:manageYourMoneyMobile/common/services/validators.service.dart';
-import 'package:manageYourMoneyMobile/common/widgets/AuthForms/authInput.dart';
+
+import 'package:manageYourMoneyMobile/common/widgets/auth-forms/authInput.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
 
 class LogInForm extends StatefulWidget {
-  const LogInForm({
-    Key key, 
-    this.title,
-    this.height
-    }) : super(key: key);
+  const LogInForm({Key key, this.title, this.height}) : super(key: key);
   final String title;
-  final double height;  
+  final double height;
   @override
   LogInFormState createState() {
     return LogInFormState();
@@ -77,8 +73,8 @@ class LogInFormState extends State<LogInForm> {
 
   Widget _button(String text, void Function() func) {
     return Container(
-       width: MediaQuery.of(context).size.width * 0.9,
-       height: 50,
+      width: MediaQuery.of(context).size.width * 0.9,
+      height: 50,
       child: RaisedButton(
         onPressed: func,
         disabledTextColor: const Color.fromRGBO(0, 0, 0, 0.85),
