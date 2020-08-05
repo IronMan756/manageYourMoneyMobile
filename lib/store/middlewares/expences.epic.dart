@@ -16,3 +16,15 @@ Stream<dynamic> getExpencesEpic(
             return GetExpencesSuccess(expences);
           }));
 }
+
+Stream<dynamic> removeExpenceEpic(
+    Stream<dynamic> actions, EpicStore<dynamic> _store) {
+  return actions
+      .where((dynamic action) => action is RemoveExpencePending)
+      .switchMap((dynamic action) =>
+          Stream<ExpenceModel>.fromFuture(removeExpence(action))
+              .map((ExpenceModel expences) {
+            print(expences);
+            return GetExpencesPending();
+          }));
+}

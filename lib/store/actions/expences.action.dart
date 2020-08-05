@@ -31,3 +31,8 @@ class CreateExpencePending {
   String name;
   String description;
 }
+
+class RemoveExpencePending {
+  RemoveExpencePending(this.id);
+  String id;
+}

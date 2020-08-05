@@ -43,6 +43,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           ExpenseItemWidget(
+                              expence: state.expences[index],
                               expenseName: state.expences[index].name,
                               balance: state.expences[index].suma,
                               expenseDate: state.expences[index].date,

@@ -9,8 +9,10 @@ class PocketItemWidget extends StatelessWidget {
       this.balance,
       this.availableMoney,
       this.purseLimit,
-      this.dealCount})
+      this.dealCount,
+      this.func})
       : super(key: key);
+  final Function func;
   final String purseName;
   final String purseImg;
   final int balance;
@@ -84,9 +86,7 @@ class PocketItemWidget extends StatelessWidget {
                                             const Text('Limit:'),
                                             const SizedBox(width: 5),
                                             Text(
-                                              purseLimit != null
-                                                  ? purseLimit.toString()
-                                                  : '0',
+                                              purseLimit.toString() ?? '0',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 16),
@@ -96,8 +96,11 @@ class PocketItemWidget extends StatelessWidget {
                                           ])),
                                       Padding(
                                           padding: const EdgeInsets.all(5),
-                                          child: Text(
-                                              'Balance: ${balance ?? "0"} grn')),
+                                          child: InkWell(
+                                            onTap: () => func(),
+                                            child: Text(
+                                                'Balance: ${balance ?? "0"} grn'),
+                                          )),
                                       Padding(
                                           padding: const EdgeInsets.all(5),
                                           child: Text(
