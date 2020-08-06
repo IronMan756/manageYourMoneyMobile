@@ -34,25 +34,24 @@ Future<List<ExpenceModel>> getExpences() async {
 
 // ignore: missing_return
 Future<ExpenceModel> removeExpence(dynamic action) async {
-  print('Xuy');
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('access_token');
-    print(action);
-    // final http.Response response =
-    //     await http.delete('${getBaseApiURL()}expences?id=$id', headers: {
-    //   'Content-Type': 'application/json',
-    //   'Accept': 'application/json',
-    //   'Authorization': 'Bearer $token',
-    // });
-    // if (response.statusCode == 200) {
-    //   print(response.body);
-    //   // json
-    //   //     .decode(response.body)['data']
-    //   //     .map<ExpenceModel>((dynamic item) =>
-    //   //         ExpenceModel.fromJson(item as Map<String, dynamic>))
-    //   //     .toList() as List<ExpenceModel>;
-    // }
+
+    final http.Response response = await http
+        .delete('${getBaseApiURL()}expences?id=${action.id}', headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    if (response.statusCode == 200) {
+      // print(response.body);
+      json
+          .decode(response.body)['data']
+          .map<ExpenceModel>((dynamic item) =>
+              ExpenceModel.fromJson(item as Map<String, dynamic>))
+          .toList() as List<ExpenceModel>;
+    }
   } catch (e) {
     print(e);
     toaster.show(

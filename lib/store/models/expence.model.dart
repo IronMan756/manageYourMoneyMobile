@@ -1,16 +1,20 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+
 class ExpenceModel {
   ExpenceModel(
       {this.userId,
       this.purseId,
       this.suma,
-      this.date,
+      // this.date,
       this.name,
       this.description,
       this.id});
   final String userId;
   final String purseId;
   final int suma;
-  final String date;
+  // final HttpDate date;
   final String name;
   final String description;
   final String id;
@@ -20,7 +24,7 @@ class ExpenceModel {
       'userId': userId,
       'purseId': purseId,
       'suma': suma,
-      'date': date,
+      // 'date': date,
       'name': name,
       'description': description,
       'id': id
@@ -32,7 +36,7 @@ class ExpenceModel {
     return ExpenceModel(
         userId: json['userId'].toString(),
         purseId: json['purseId'].toString(),
-        date: json['data'].toString(),
+        // date: json['data'] as HttpDate,
         suma: json['suma'] as int,
         name: json['name'].toString(),
         description: json['description'].toString(),
@@ -44,7 +48,7 @@ class ExpenceModel {
     return ExpenceModel(
         userId: map['userId'].toString(),
         purseId: map['purseId'].toString(),
-        date: map['data'].toString(),
+        // date: map['data'] as ,
         suma: map['suma'] as int,
         name: map['name'].toString(),
         description: map['description'].toString(),

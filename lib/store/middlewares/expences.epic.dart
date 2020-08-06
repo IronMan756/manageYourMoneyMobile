@@ -12,7 +12,6 @@ Stream<dynamic> getExpencesEpic(
       .switchMap((dynamic action) =>
           Stream<List<ExpenceModel>>.fromFuture(getExpences())
               .map((List<ExpenceModel> expences) {
-            print(expences);
             return GetExpencesSuccess(expences);
           }));
 }
@@ -24,7 +23,6 @@ Stream<dynamic> removeExpenceEpic(
       .switchMap((dynamic action) =>
           Stream<ExpenceModel>.fromFuture(removeExpence(action))
               .map((ExpenceModel expences) {
-            print(expences);
             return GetExpencesPending();
           }));
 }

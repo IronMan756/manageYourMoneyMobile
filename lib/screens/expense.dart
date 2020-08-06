@@ -30,6 +30,8 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
         converter: (Store<AppState> store) =>
             _ViewModel(expences: store.state.expences),
         builder: (BuildContext context, _ViewModel state) {
+          // print(
+          //     '${state.expences[2].date.toString().substring(5, 7)} ${state.expences[2].date.toString().substring(8, 10)} ${state.expences[2].date.toString().substring(0, 4)}');
           return Scaffold(
               body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -46,7 +48,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                               expence: state.expences[index],
                               expenseName: state.expences[index].name,
                               balance: state.expences[index].suma,
-                              expenseDate: state.expences[index].date,
+                              // expenseDate: state.expences[index].date,
                               description: state.expences[index].description),
                           // const SizedBox(
                           //   height: 10,

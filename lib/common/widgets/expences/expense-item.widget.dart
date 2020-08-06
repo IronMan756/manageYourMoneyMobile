@@ -23,6 +23,7 @@ class ExpenseItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(expenseDate.toString());
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
@@ -84,7 +85,14 @@ class ExpenseItemWidget extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                       left: 9,
                                     ),
-                                    child: Text(expenseDate ?? 'Expense date')),
+                                    child:
+                                        //  Text(expenseDate.toString()
+                                        //     // expenseDate.substring(0, 4)
+                                        //     // '${expenseDate.toString().substring(5, 7)} ${expenseDate.toString().substring(8, 10)} ${expenseDate.toString().substring(0, 4)}'
+                                        //     // expenseDate.toString()
+                                        //     ??
+                                        const Text('Expense date')),
+                                // ${expenseDate.toString().substring(4, 15)}${expenseDate.toString().substring(16, 21)}
                               ],
                             )),
                       ),
