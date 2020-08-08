@@ -13,7 +13,7 @@ Stream<dynamic> loginEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
           Stream<dynamic>.fromFuture(logIn(action as LoginPending))
               .expand((dynamic user) => <dynamic>[
                     LoginSuccess(user as List<UserModel>),
-                    if (user.length > 0 != null)
+                    if (user != null)
                       PushReplacementAction(MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
                               const HomeScreen()))
