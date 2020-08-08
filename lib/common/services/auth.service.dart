@@ -5,12 +5,11 @@ import 'package:manageYourMoneyMobile/common/constants/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:manageYourMoneyMobile/common/services/toaster.service.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
+import 'package:manageYourMoneyMobile/store/models/user.model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<dynamic> signUp(SignUpPending action) async {
   try {
-  
-
     //   String token = prefs.getString('access_token');
     // String dispenserId = prefs.getString('dispenserId');
     final Map<String, dynamic> body = {
@@ -43,7 +42,6 @@ Future<dynamic> signUp(SignUpPending action) async {
 }
 
 Future<dynamic> logIn(LoginPending action) async {
-  
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final Map<String, dynamic> body = {
@@ -58,11 +56,9 @@ Future<dynamic> logIn(LoginPending action) async {
       final Map<String, dynamic> body =
           json.decode(response.body) as Map<String, dynamic>;
 
-
-      print('Token${body['token'].toString()}');
-
       await prefs.setString('access_token', body['token'].toString());
-      return json.decode(response.body);
+
+      return json.decode(response.body).toList() as UserModel;
     } else if (response.statusCode == 409) {
       toaster.show(message: 'Incorrect Email or Password', color: Colors.red);
     } else {
@@ -75,9 +71,6 @@ Future<dynamic> logIn(LoginPending action) async {
   }
 }
 
-
-
-
-//  to read token     
+//  to read token
 // SharedPreferences prefs = await SharedPreferences.getInstance();
 // prefs.getString('access_token')

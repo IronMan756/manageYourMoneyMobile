@@ -21,8 +21,8 @@ Stream<dynamic> removeExpenceEpic(
   return actions
       .where((dynamic action) => action is RemoveExpencePending)
       .switchMap((dynamic action) =>
-          Stream<ExpenceModel>.fromFuture(removeExpence(action))
-              .map((ExpenceModel expences) {
+          Stream<dynamic>.fromFuture(removeExpence(action)).map((data) {
+            if (data == false) RemoveExpenceError(data);
             return GetExpencesPending();
-          }));
+          }).doOnError((dynamic error) => RemoveExpenceError(error)));
 }

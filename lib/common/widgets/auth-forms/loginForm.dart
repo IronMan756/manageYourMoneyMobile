@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:manageYourMoneyMobile/common/services/validators.service.dart';
 
-import 'package:manageYourMoneyMobile/common/widgets/auth-forms/authInput.dart';
+import 'package:manageYourMoneyMobile/common/widgets/mYMInput/mYMInput.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
 
@@ -38,7 +38,7 @@ class LogInFormState extends State<LogInForm> {
                   style: const TextStyle(
                       fontSize: 27, fontWeight: FontWeight.bold),
                 )),
-                AuthInput(
+                MYMInput(
                   icon: Icon(Icons.email),
                   obscureText: false,
                   myController: _emailController,
@@ -46,7 +46,7 @@ class LogInFormState extends State<LogInForm> {
                   validator: (String value) => validators.validateEmail(value,
                       'Email is not valid. Please input email in corect form'),
                 ),
-                AuthInput(
+                MYMInput(
                     icon: Icon(Icons.lock),
                     obscureText: true,
                     myController: _passwordController,

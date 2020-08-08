@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:manageYourMoneyMobile/common/widgets/drawer/drawer.dart';
 import 'package:manageYourMoneyMobile/screens/expense.dart';
 import 'package:manageYourMoneyMobile/screens/incoms.dart';
-import 'package:manageYourMoneyMobile/screens/pouch.dart';
-
+import 'package:manageYourMoneyMobile/screens/purses.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -22,31 +21,31 @@ class _HomeScreenState extends State<HomeScreen> {
     const ExpenseScreen()
   ];
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-            title: const Text('Current route'),
-            ),
+          title: const Text('Current route'),
+        ),
         body: _children[_selectedIndex],
-        drawer: AppDrawer(),
+        drawer: const AppDrawer(),
         drawerEnableOpenDragGesture: true,
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.input),
-              title: Text('Income'),
+              title: Text('Incomes'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_balance_wallet),
-              title: Text('Pouch'),
+              title: Text('Purses'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.import_export),
-              title: Text('Expense'),
+              title: Text('Expenses'),
             ),
           ],
           currentIndex: _selectedIndex,

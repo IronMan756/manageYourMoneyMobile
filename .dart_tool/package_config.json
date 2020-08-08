@@ -98,6 +98,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "jwt_decoder",
+      "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/jwt_decoder-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "lint",
       "rootUri": "file:///Users/andrewstarodubtsev/flutter/.pub-cache/hosted/pub.dartlang.org/lint-1.1.1",
       "packageUri": "lib/",
@@ -254,7 +260,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-08-05T16:22:04.912388Z",
+  "generated": "2020-08-08T17:18:55.989176Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }

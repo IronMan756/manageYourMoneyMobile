@@ -15,3 +15,15 @@ Stream<dynamic> getIncomesEpic(
             return GetIncomesSuccess(incomes);
           }));
 }
+
+Stream<dynamic> removeIncomeEpic(
+    Stream<dynamic> actions, EpicStore<dynamic> _store) {
+  return actions
+      .where((dynamic action) => action is RemoveIncomePending)
+      .switchMap((dynamic action) =>
+          Stream<dynamic>.fromFuture(removeIncome(action)).map((data) {
+            print(data);
+            if (data == false) RemoveIncomeError(data);
+            return GetIncomesPending();
+          }).doOnError((dynamic error) => RemoveIncomeError(error)));
+}

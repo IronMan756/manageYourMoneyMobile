@@ -25,7 +25,6 @@ Future<List<ExpenceModel>> getExpences() async {
           .toList() as List<ExpenceModel>;
     }
   } catch (e) {
-    print(e);
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;
@@ -33,7 +32,7 @@ Future<List<ExpenceModel>> getExpences() async {
 }
 
 // ignore: missing_return
-Future<ExpenceModel> removeExpence(dynamic action) async {
+Future<dynamic> removeExpence(dynamic action) async {
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('access_token');
@@ -45,15 +44,9 @@ Future<ExpenceModel> removeExpence(dynamic action) async {
       'Authorization': 'Bearer $token',
     });
     if (response.statusCode == 200) {
-      // print(response.body);
-      json
-          .decode(response.body)['data']
-          .map<ExpenceModel>((dynamic item) =>
-              ExpenceModel.fromJson(item as Map<String, dynamic>))
-          .toList() as List<ExpenceModel>;
+      return json.decode(response.body)['data'] as dynamic;
     }
   } catch (e) {
-    print(e);
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:manageYourMoneyMobile/common/widgets/auth-forms/authInput.dart';
+import 'package:manageYourMoneyMobile/common/widgets/mYMInput/mYMInput.dart';
 import 'package:manageYourMoneyMobile/store/actions/auth.action.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
 
@@ -42,14 +42,14 @@ class SignUpFormState extends State<SignUpForm> {
                     style: const TextStyle(
                         fontSize: 27, fontWeight: FontWeight.bold),
                   )),
-                  AuthInput(
+                  MYMInput(
                       icon: Icon(Icons.person),
                       myController: _loginController,
                       obscureText: false,
                       hint: 'Login',
                       validator: (String value) => validators.validateIsEmpty(
                           value, 'Please enter login')),
-                  AuthInput(
+                  MYMInput(
                     icon: Icon(Icons.email),
                     obscureText: false,
                     myController: _emailController,
@@ -57,14 +57,14 @@ class SignUpFormState extends State<SignUpForm> {
                     validator: (String value) => validators.validateEmail(value,
                         'Email is not valid. Please input email in corect form'),
                   ),
-                  AuthInput(
+                  MYMInput(
                       icon: Icon(Icons.lock),
                       obscureText: true,
                       myController: _passwordController,
                       hint: 'Password',
                       validator: (String value) => validators.validateSize(
                           value, 6, 'Password should be min 6 characters')),
-                  AuthInput(
+                  MYMInput(
                       icon: Icon(Icons.lock),
                       obscureText: true,
                       myController: _cpasswordController,

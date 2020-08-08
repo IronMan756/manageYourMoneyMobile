@@ -25,6 +25,11 @@ EpicMiddleware<dynamic> getTransactionsMiddleware =
     EpicMiddleware<dynamic>(getTransactionsEpic);
 EpicMiddleware<dynamic> removeExpenceMiddleware =
     EpicMiddleware<dynamic>(removeExpenceEpic);
+EpicMiddleware<dynamic> removeIncomeMiddleware =
+    EpicMiddleware<dynamic>(removeIncomeEpic);
+
+EpicMiddleware<dynamic> removePurseMiddleware =
+    EpicMiddleware<dynamic>(removePurseEpic);
 
 // EpicMiddleware <dynamic>getUserDedailsMiddleware = EpicMiddleware<dynamic>(getUserDedailsEpic);
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -39,7 +44,9 @@ final Store<AppState> store =
   getExpencesMiddleware,
   getCategoriesMiddleware,
   getTransactionsMiddleware,
-  removeExpenceMiddleware
+  removeExpenceMiddleware,
+  removeIncomeMiddleware,
+  removePurseMiddleware
 
   // getUserDedailsMiddleware
 ]);

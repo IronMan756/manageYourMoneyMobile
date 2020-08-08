@@ -5,25 +5,13 @@ import 'package:manageYourMoneyMobile/store/models/expence.model.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
 
 class ExpenseItemWidget extends StatelessWidget {
-  const ExpenseItemWidget(
-      {Key key,
-      this.expenseName,
-      this.description,
-      this.pocketNameFrom,
-      this.expenseDate,
-      this.balance,
-      this.expence})
+  const ExpenseItemWidget({Key key, this.pocketNameFrom, this.expence})
       : super(key: key);
-  final String expenseName;
-  final String description;
   final int pocketNameFrom;
-  final String expenseDate;
-  final int balance;
   final ExpenceModel expence;
 
   @override
   Widget build(BuildContext context) {
-    print(expenseDate.toString());
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
@@ -47,15 +35,16 @@ class ExpenseItemWidget extends StatelessWidget {
                                 Padding(
                                   padding:
                                       const EdgeInsets.only(left: 8, top: 5),
-                                  child: Text(expenseName ?? 'Expense name',
+                                  child: Text(expence.name ?? 'Expense name',
                                       style: const TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold)),
                                 ),
                                 Padding(
                                     padding:
-                                        const EdgeInsets.only(left: 8, top: 8),
-                                    child: Text(description ?? 'description'))
+                                        const EdgeInsets.only(left: 8, top: 5),
+                                    child: Text(
+                                        expence.description ?? 'description'))
                               ],
                             )),
                       ),
@@ -63,7 +52,7 @@ class ExpenseItemWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 70, right: 0),
                         child: Container(
                             height: 90,
-                            width: MediaQuery.of(context).size.width * 0.38,
+                            width: MediaQuery.of(context).size.width * 0.45,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +60,7 @@ class ExpenseItemWidget extends StatelessWidget {
                                 Padding(
                                     padding: const EdgeInsets.only(left: 7),
                                     child: Text(
-                                        '${balance != null ? balance.toString() : '14000'} grn',
+                                        '${expence.suma != null ? expence.suma.toString() : '14000'} grn',
                                         style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700))),
@@ -81,8 +70,8 @@ class ExpenseItemWidget extends StatelessWidget {
                                     ),
                                     child: Text(
                                         ' from : ${pocketNameFrom != null ? pocketNameFrom.toString() : "Purse name"}')),
-                                Padding(
-                                    padding: const EdgeInsets.only(
+                                const Padding(
+                                    padding: EdgeInsets.only(
                                       left: 9,
                                     ),
                                     child:
@@ -91,7 +80,7 @@ class ExpenseItemWidget extends StatelessWidget {
                                         //     // '${expenseDate.toString().substring(5, 7)} ${expenseDate.toString().substring(8, 10)} ${expenseDate.toString().substring(0, 4)}'
                                         //     // expenseDate.toString()
                                         //     ??
-                                        const Text('Expense date')),
+                                        Text('Expense date')),
                                 // ${expenseDate.toString().substring(4, 15)}${expenseDate.toString().substring(16, 21)}
                               ],
                             )),
