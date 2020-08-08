@@ -57,14 +57,14 @@ Future<dynamic> logIn(LoginPending action) async {
           json.decode(response.body) as Map<String, dynamic>;
 
       await prefs.setString('access_token', body['token'].toString());
-
-      return json.decode(response.body).toList() as UserModel;
+      return json.decode(response.body);
     } else if (response.statusCode == 409) {
       toaster.show(message: 'Incorrect Email or Password', color: Colors.red);
     } else {
       throw Exception('Failed to getting lotItems ');
     }
   } catch (e) {
+    print(e);
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;

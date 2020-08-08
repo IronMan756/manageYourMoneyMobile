@@ -7,8 +7,8 @@ class LoginPending {
 }
 
 class LoginSuccess {
-  LoginSuccess(this.user);
-  List<UserModel> user;
+  // LoginSuccess(this.user);
+  // List<UserModel> user;
 }
 
 class LoginError {}

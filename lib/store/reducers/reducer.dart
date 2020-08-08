@@ -30,7 +30,7 @@ class AppState {
 }
 
 AppState appStateReducer(AppState state, dynamic action) => AppState(
-    user: userReducer(state.user, action),
+    // user: userReducer(state.user, action),
     purses: pursesReducer(state.purses, action),
     incomes: incomesReducer(state.incomes, action),
     expences: expencesReducer(state.expences, action),
