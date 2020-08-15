@@ -49,7 +49,7 @@ class _PouchScreenState extends State<PouchScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(state.purses[index].name.toString()),
-                              Text(':'),
+                              const Text(':'),
                               Text(state.purses[index].balance.toString())
                             ],
                           )
