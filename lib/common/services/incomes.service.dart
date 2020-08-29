@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:manageYourMoneyMobile/common/services/toaster.service.dart';
 import 'package:http/http.dart' as http;
 import 'package:manageYourMoneyMobile/common/constants/config.dart';
-import 'package:manageYourMoneyMobile/store/models/purse.model.dart';
+import 'package:manageYourMoneyMobile/store/models/income.model.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-// ignore: missing_return
-Future<List<PurseModel>> getPurses() async {
+Future<List<IncomeModel>> getIncomes() async {
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('access_token');
+    final String token = prefs.getString('access_token');
     final http.Response response =
-        await http.get('${getBaseApiURL()}purses', headers: {
+        await http.get('${getBaseApiURL()}incomes', headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',
@@ -22,9 +21,9 @@ Future<List<PurseModel>> getPurses() async {
     if (response.statusCode == 200) {
       return json
           .decode(response.body)['data']
-          .map<PurseModel>((dynamic item) =>
-              PurseModel.fromJson(item as Map<String, dynamic>))
-          .toList() as List<PurseModel>;
+          .map<IncomeModel>((dynamic item) =>
+              IncomeModel.fromJson(item as Map<String, dynamic>))
+          .toList() as List<IncomeModel>;
     }
   } catch (e) {
     toaster.show(
@@ -33,13 +32,13 @@ Future<List<PurseModel>> getPurses() async {
   }
 }
 
-Future<dynamic> removePurse(dynamic action) async {
+Future<dynamic> removeIncome(dynamic action) async {
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('access_token');
 
-    final http.Response response =
-        await http.delete('${getBaseApiURL()}purses?id=${action.id}', headers: {
+    final http.Response response = await http
+        .delete('${getBaseApiURL()}incomes?id=${action.id}', headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',

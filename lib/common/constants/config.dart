@@ -1,5 +1,5 @@
 // const String apiPath = 'apiPublicMobile/methadone';
-const String domenSuffix = 'localhost:8090';
+const String domenSuffix = 'manage-your-money-api.herokuapp.com';
 const String protocol = 'http://';
 String getBaseApiURL() {
   return '$protocol$domenSuffix/';
