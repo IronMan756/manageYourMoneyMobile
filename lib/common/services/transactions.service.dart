@@ -19,7 +19,6 @@ Future<List<TransactionModel>> getTransactions() async {
       'Authorization': 'Bearer $token',
     });
     if (response.statusCode == 200) {
-      print(response.body);
       return json
           .decode(response.body)['data']
           .map<TransactionModel>((dynamic item) =>
@@ -27,7 +26,6 @@ Future<List<TransactionModel>> getTransactions() async {
           .toList() as List<TransactionModel>;
     }
   } catch (e) {
-    print(e);
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;

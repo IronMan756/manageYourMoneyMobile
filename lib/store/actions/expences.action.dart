@@ -31,3 +31,13 @@ class CreateExpencePending {
   String name;
   String description;
 }
+
+class RemoveExpenceError {
+  RemoveExpenceError(this.error);
+  dynamic error;
+}
+
+class RemoveExpencePending {
+  RemoveExpencePending(this.id);
+  String id;
+}

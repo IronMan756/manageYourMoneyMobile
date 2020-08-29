@@ -27,7 +27,27 @@ Future<List<PurseModel>> getPurses() async {
           .toList() as List<PurseModel>;
     }
   } catch (e) {
-    print(e);
+    toaster.show(
+        message: 'Error 404, Please try again later', color: Colors.red);
+    return null;
+  }
+}
+
+Future<dynamic> removePurse(dynamic action) async {
+  try {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String token = prefs.getString('access_token');
+
+    final http.Response response =
+        await http.delete('${getBaseApiURL()}purses?id=${action.id}', headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    if (response.statusCode == 200) {
+      return json.decode(response.body)['data'] as dynamic;
+    }
+  } catch (e) {
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;

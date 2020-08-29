@@ -31,3 +31,13 @@ class CreateIncomePending {
   String name;
   String description;
 }
+
+class RemoveIncomeError {
+  RemoveIncomeError(this.error);
+  dynamic error;
+}
+
+class RemoveIncomePending {
+  RemoveIncomePending(this.id);
+  String id;
+}

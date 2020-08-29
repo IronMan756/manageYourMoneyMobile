@@ -12,7 +12,17 @@ Stream<dynamic> getExpencesEpic(
       .switchMap((dynamic action) =>
           Stream<List<ExpenceModel>>.fromFuture(getExpences())
               .map((List<ExpenceModel> expences) {
-            print(expences);
             return GetExpencesSuccess(expences);
           }));
+}
+
+Stream<dynamic> removeExpenceEpic(
+    Stream<dynamic> actions, EpicStore<dynamic> _store) {
+  return actions
+      .where((dynamic action) => action is RemoveExpencePending)
+      .switchMap((dynamic action) =>
+          Stream<dynamic>.fromFuture(removeExpence(action)).map((data) {
+            if (data == false) RemoveExpenceError(data);
+            return GetExpencesPending();
+          }).doOnError((dynamic error) => RemoveExpenceError(error)));
 }

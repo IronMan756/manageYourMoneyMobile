@@ -26,7 +26,27 @@ Future<List<IncomeModel>> getIncomes() async {
           .toList() as List<IncomeModel>;
     }
   } catch (e) {
-    print(e);
+    toaster.show(
+        message: 'Error 404, Please try again later', color: Colors.red);
+    return null;
+  }
+}
+
+Future<dynamic> removeIncome(dynamic action) async {
+  try {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String token = prefs.getString('access_token');
+
+    final http.Response response = await http
+        .delete('${getBaseApiURL()}incomes?id=${action.id}', headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    if (response.statusCode == 200) {
+      return json.decode(response.body)['data'] as dynamic;
+    }
+  } catch (e) {
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;

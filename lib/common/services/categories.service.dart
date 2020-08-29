@@ -25,7 +25,6 @@ Future<List<CategoryModel>> getCategories() async {
           .toList() as List<CategoryModel>;
     }
   } catch (e) {
-    print(e);
     toaster.show(
         message: 'Error 404, Please try again later', color: Colors.red);
     return null;

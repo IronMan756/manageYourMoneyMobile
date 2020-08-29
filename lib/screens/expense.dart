@@ -31,29 +31,52 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
             _ViewModel(expences: store.state.expences),
         builder: (BuildContext context, _ViewModel state) {
           return Scaffold(
-              body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListView.builder(
-                itemCount:
-                    state.expences != null ? state.expences.toList().length : 0,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  return Container(
-                      margin: const EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          ExpenseItemWidget(
-                              expenseName: state.expences[index].name,
-                              balance: state.expences[index].suma,
-                              expenseDate: state.expences[index].date,
-                              description: state.expences[index].description),
-                          // const SizedBox(
-                          //   height: 10,
-                          // ),
-                        ],
-                      ));
-                }),
-          ));
+            floatingActionButton:
+                // : state.currentUser.userId == state.user.userId
+                // ?
+                FloatingActionButton(
+              backgroundColor: const Color.fromRGBO(251, 168, 170, 1),
+              onPressed: () => showModalBottomSheet(
+                  context: context,
+                  useRootNavigator: true,
+                  // isScrollControlled: true,
+                  builder: (BuildContext context) =>
+                      // ignore: avoid_unnecessary_containers
+                      Container(
+                          height: 1900,
+                          child: const Center(
+                            child: Text('Форма для добавления расхода'),
+                          ))),
+              child: Icon(Icons.add), //  store.dispatch(PushAction(
+              //     MaterialPageRoute<void>(
+              //         builder: (BuildContext context) =>
+              //             EditProfileScreen()))),
+            ),
+            body:
+                //    Padding(
+                // padding: const EdgeInsets.all(0),
+                // child:
+                ListView.builder(
+                    itemCount: state.expences != null
+                        ? state.expences.toList().length
+                        : 0,
+                    itemBuilder: (BuildContext ctxt, int index) {
+                      return Container(
+                          margin: const EdgeInsets.only(
+                              top: 5, left: 10, right: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              ExpenseItemWidget(
+                                expence: state.expences[index],
+                              ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
+                            ],
+                          ));
+                    }),
+          );
         });
   }
 }
