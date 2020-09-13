@@ -11,6 +11,15 @@ class _ValidatorsService {
     }
   }
 
+  String validateBalance(String value, int length, String errorText) {
+
+    if (value.length < length && value is int) {
+      return errorText;
+    } else {
+      return null;
+    }
+  }
+
   String validateIsEmpty(String value, String errorText) {
     if (value.isEmpty) {
       return errorText;

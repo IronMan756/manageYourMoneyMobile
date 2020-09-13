@@ -54,7 +54,7 @@ class AddPurseFormState extends State<AddPurseForm> {
                             fontSize: 25, fontWeight: FontWeight.bold),
                       )),
                       MYMInput(
-                        icon: Icon(Icons.business_center),
+                        icon: Icon(Icons.account_balance_wallet ),
                         obscureText: false,
                         myController: _purseNameController,
                         hint: 'Name',
@@ -62,12 +62,14 @@ class AddPurseFormState extends State<AddPurseForm> {
                             'Field is not valid. Please input value longer than 1 character'),
                       ),
                       MYMInput(
-                        icon: Icon(Icons.account_balance_wallet),
+                        icon: Icon(Icons.account_balance
+                        // .business_center
+                        ),
                         obscureText: false,
                         myController: _balanseController,
                         hint: 'Balance',
-                      validator: (String value) => validators.validateSize(value,1,
-                            'Balance is not valid. Please input value longer than 1 number'),
+                      validator: (String value) => validators.validateBalance(value,1,
+                            'Balance is not valid. Please input value type number and longer than 1 number'),
     
                       ),
                       Row(
