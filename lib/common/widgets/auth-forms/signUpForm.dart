@@ -46,12 +46,14 @@ class SignUpFormState extends State<SignUpForm> {
                       icon: Icon(Icons.person),
                       myController: _loginController,
                       obscureText: false,
+           
                       hint: 'Login',
                       validator: (String value) => validators.validateIsEmpty(
                           value, 'Please enter login')),
                   MYMInput(
                     icon: Icon(Icons.email),
                     obscureText: false,
+      
                     myController: _emailController,
                     hint: 'Email',
                     validator: (String value) => validators.validateEmail(value,
@@ -60,6 +62,7 @@ class SignUpFormState extends State<SignUpForm> {
                   MYMInput(
                       icon: Icon(Icons.lock),
                       obscureText: true,
+                      maxLines : 1,
                       myController: _passwordController,
                       hint: 'Password',
                       validator: (String value) => validators.validateSize(
@@ -67,6 +70,7 @@ class SignUpFormState extends State<SignUpForm> {
                   MYMInput(
                       icon: Icon(Icons.lock),
                       obscureText: true,
+                      maxLines : 1,
                       myController: _cpasswordController,
                       hint: 'Password',
                       validator: (String value) => validators.compareValidate(

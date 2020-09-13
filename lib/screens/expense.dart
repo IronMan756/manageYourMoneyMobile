@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:manageYourMoneyMobile/common/widgets/addExpenceForm/addExpenceForm.dart';
 import 'package:manageYourMoneyMobile/common/widgets/expences/expense-item.widget.dart';
 import 'package:manageYourMoneyMobile/store/actions/expences.action.dart';
 import 'package:manageYourMoneyMobile/store/models/expence.model.dart';
@@ -38,15 +39,22 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               backgroundColor: const Color.fromRGBO(251, 168, 170, 1),
               onPressed: () => showModalBottomSheet(
                   context: context,
+                  isScrollControlled: true,
                   useRootNavigator: true,
                   // isScrollControlled: true,
-                  builder: (BuildContext context) =>
-                      // ignore: avoid_unnecessary_containers
-                      Container(
-                          height: 1900,
-                          child: const Center(
-                            child: Text('Форма для добавления расхода'),
-                          ))),
+                  builder: (BuildContext context) {
+
+                  return SingleChildScrollView(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height ,
+                      padding:
+                          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const Padding(
+                        padding:  EdgeInsets.fromLTRB(0, 0, 0, 0), 
+                        child: AddExpenceForm( title: 'New Expense')))); 
+}
+  
+                          ),
               child: Icon(Icons.add), //  store.dispatch(PushAction(
               //     MaterialPageRoute<void>(
               //         builder: (BuildContext context) =>

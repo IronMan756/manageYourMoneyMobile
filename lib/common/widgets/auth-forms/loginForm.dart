@@ -40,6 +40,7 @@ class LogInFormState extends State<LogInForm> {
                 )),
                 MYMInput(
                   icon: Icon(Icons.email),
+
                   obscureText: false,
                   myController: _emailController,
                   hint: 'Email',
@@ -49,6 +50,7 @@ class LogInFormState extends State<LogInForm> {
                 MYMInput(
                     icon: Icon(Icons.lock),
                     obscureText: true,
+                    maxLines:1,
                     myController: _passwordController,
                     hint: 'Password',
                     validator: (String value) => validators.validateSize(

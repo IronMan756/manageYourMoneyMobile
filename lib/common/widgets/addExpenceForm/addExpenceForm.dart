@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:manageYourMoneyMobile/common/services/validators.service.dart';
 import 'package:manageYourMoneyMobile/common/widgets/mYMInput/mYMInput.dart';
+import 'package:manageYourMoneyMobile/store/actions/expences.action.dart';
 import 'package:manageYourMoneyMobile/store/actions/purses.action.dart';
 import 'package:manageYourMoneyMobile/store/models/user.model.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
@@ -16,22 +17,24 @@ class _ViewModel {
   List<UserModel> user;
 }
 
-class AddPurseForm extends StatefulWidget {
-  const AddPurseForm({Key key, this.title, this.height}) : super(key: key);
+class AddExpenceForm extends StatefulWidget {
+  const AddExpenceForm({Key key, this.title, this.height}) : super(key: key);
   final String title;
   final double height;
   @override
- AddPurseFormState createState() {
-    return AddPurseFormState();
+ AddExpenceFormState createState() {
+    return AddExpenceFormState();
   }
 }
 
-class AddPurseFormState extends State<AddPurseForm> {
+class AddExpenceFormState extends State<AddExpenceForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _purseNameController = TextEditingController();
-  final TextEditingController _balanseController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+   final TextEditingController _descriptionController = TextEditingController();
+
   String _name;
-  String _balance;
+  String _amount;
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +46,14 @@ class AddPurseFormState extends State<AddPurseForm> {
               key: _formKey,
               // ignore: avoid_unnecessary_containers
               child: Container(
+                // height: MediaQuery.of(context).size.height * widget.height,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
+                      const SizedBox(height: 10,),
                       const Align(
                           child: Text(
-                        'New Purse',
+                        'New Expence',
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       )),
@@ -61,16 +66,35 @@ class AddPurseFormState extends State<AddPurseForm> {
                         validator: (String value) => validators.validateSize(value,1,
                             'Field is not valid. Please input value longer than 1 character'),
                       ),
+                       MYMInput(
+                        icon: Icon(Icons.list
+                        ),
+                        maxLines: 1,
+                        obscureText: false,
+                        myController: _amountController,
+                        hint: 'Chouse Purse',
+                      validator: (String value) =>  validators.validateSize(value,1,
+                            'Amount is not valid. Please input value longer than 1 character'),
+                      ),
+                     
                       MYMInput(
                         icon: Icon(Icons.account_balance
                         ),
                         maxLines: 1,
                         obscureText: false,
-                        myController: _balanseController,
-                        hint: 'Balance',
-                      validator: (String value) => validators.validateBalance(value,1,
-                            'Balance is not valid. Please input value type number and longer than 1 number'),
-    
+                        myController: _amountController,
+                        hint: 'Amount',
+                      validator: (String value) =>  validators.validateSize(value,1,
+                            'Amount is not valid. Please input value longer than 1 character'),
+                      ),
+                      MYMInput(
+                        icon: const Icon(null),
+                        maxLines: 3,
+                        obscureText: false,
+                        myController: _descriptionController,
+                        hint: 'Description',
+                      validator: (String value) =>  validators.validateSize(value,1,
+                            'Description is not valid. Please input value longer than 1 character'),
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -78,7 +102,7 @@ class AddPurseFormState extends State<AddPurseForm> {
                             Container(
                               child: _button('Add', () {
                                 if (_formKey.currentState.validate()) {
-                                  _createPurse(store.state.user);
+                                  _createExpense(store.state.user);
                                   Navigator.pop(context);
                                 }
                               }, 0.35, const Color.fromRGBO(191, 253, 225, 1)),
@@ -87,19 +111,19 @@ class AddPurseFormState extends State<AddPurseForm> {
                               child: _button('Cancel',() => Navigator.pop(context), 0.35,
                                   const Color.fromRGBO(251, 168, 170, 1)),
                             ),
-                          ])
+                          ]),
+                          const SizedBox(height: 20)
                     ]),
               ));
         });
   }
- 
-  // ignore: avoid_void_async
-  void _createPurse(List<UserModel> user) async {
+
+  void _createExpense(List<UserModel> user) async {
     _name = _purseNameController.text.toString();
-    _balance = _balanseController.text.toString();
-    store.dispatch(CreatePursePending(user[0].id, _name, _balance, ''));
+    _amount = _amountController.text.toString();
+    // store.dispatch(CreateExpencePending(user[0].id, _name, _balance, ''));
     _purseNameController.clear();
-    _balanseController.clear();
+    _amountController.clear();
     
   }
 
