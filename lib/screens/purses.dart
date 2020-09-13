@@ -37,7 +37,6 @@ class _PouchScreenState extends State<PouchScreen> {
         converter: (Store<AppState> store) =>
             _ViewModel(purses: store.state.purses, user:store.state.user ),
         builder: (BuildContext context, _ViewModel state) {
-          print(store.state.user[0].id );
           return Scaffold(
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.grey,
@@ -48,7 +47,7 @@ class _PouchScreenState extends State<PouchScreen> {
                   builder: (BuildContext context) =>
                       // ignore: avoid_unnecessary_containers
                       Container(
-                          height: 1900,
+                          height: 2000,
                           child: const Center(
                             child:
                                 AddPurseForm(height: 2000, title: 'New Purse'),

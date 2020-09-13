@@ -4,6 +4,7 @@ import 'package:manageYourMoneyMobile/store/middlewares/expences.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/incomes.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/login.epic.dart';
 import 'package:manageYourMoneyMobile/store/middlewares/purses.epic.dart';
+
 import 'package:manageYourMoneyMobile/store/middlewares/transaction.epic.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:redux/redux.dart';
@@ -15,6 +16,10 @@ EpicMiddleware<dynamic> loginMiddleware = EpicMiddleware<dynamic>(loginEpic);
 EpicMiddleware<dynamic> signupMiddleware = EpicMiddleware<dynamic>(signUpEpic);
 EpicMiddleware<dynamic> getPursesMiddleware =
     EpicMiddleware<dynamic>(getPursesEpic);
+EpicMiddleware<dynamic> removePurseMiddleware =
+    EpicMiddleware<dynamic>(removePurseEpic);
+EpicMiddleware<dynamic> createPurseMiddleware =
+    EpicMiddleware<dynamic>(createPurseEpic);
 EpicMiddleware<dynamic> getIncomesMiddleware =
     EpicMiddleware<dynamic>(getIncomesEpic);
 EpicMiddleware<dynamic> getExpencesMiddleware =
@@ -28,29 +33,30 @@ EpicMiddleware<dynamic> removeExpenceMiddleware =
 EpicMiddleware<dynamic> removeIncomeMiddleware =
     EpicMiddleware<dynamic>(removeIncomeEpic);
 
-EpicMiddleware<dynamic> removePurseMiddleware =
-    EpicMiddleware<dynamic>(removePurseEpic);
+    
+        EpicMiddleware<dynamic> getUserMiddleware =
+        EpicMiddleware<dynamic>(getUserEpic);
+    
+    // EpicMiddleware <dynamic>getUserDedailsMiddleware = EpicMiddleware<dynamic>(getUserDedailsEpic);
+    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+    final Store<AppState> store =
+        Store<AppState>(appStateReducer, initialState: AppState(), middleware: [
+      ...navigatorMiddleware<AppState>(navigatorKey),
+      LoggingMiddleware<dynamic>.printer(),
+      loginMiddleware,
+      signupMiddleware,
+      getPursesMiddleware,
+      getIncomesMiddleware,
+      getExpencesMiddleware,
+      getCategoriesMiddleware,
+      getTransactionsMiddleware,
+      removeExpenceMiddleware,
+      removeIncomeMiddleware,
+      removePurseMiddleware,
+      getUserMiddleware,
+      createPurseMiddleware
+    
+      // getUserDedailsMiddleware
+    ]);
+    
 
-    EpicMiddleware<dynamic> getUserMiddleware =
-    EpicMiddleware<dynamic>(getUserEpic);
-
-// EpicMiddleware <dynamic>getUserDedailsMiddleware = EpicMiddleware<dynamic>(getUserDedailsEpic);
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-final Store<AppState> store =
-    Store<AppState>(appStateReducer, initialState: AppState(), middleware: [
-  ...navigatorMiddleware<AppState>(navigatorKey),
-  LoggingMiddleware<dynamic>.printer(),
-  loginMiddleware,
-  signupMiddleware,
-  getPursesMiddleware,
-  getIncomesMiddleware,
-  getExpencesMiddleware,
-  getCategoriesMiddleware,
-  getTransactionsMiddleware,
-  removeExpenceMiddleware,
-  removeIncomeMiddleware,
-  removePurseMiddleware,
-  getUserMiddleware
-
-  // getUserDedailsMiddleware
-]);

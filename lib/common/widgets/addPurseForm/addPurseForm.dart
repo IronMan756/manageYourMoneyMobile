@@ -62,7 +62,7 @@ class AddPurseFormState extends State<AddPurseForm> {
                       ),
                       MYMInput(
                         icon: Icon(Icons.account_balance_wallet),
-                        obscureText: true,
+                        obscureText: false,
                         myController: _balanseController,
                         hint: 'Balance',
                         // validator: (String value) => validators.validateSize(
@@ -74,12 +74,13 @@ class AddPurseFormState extends State<AddPurseForm> {
                             Container(
                               child: _button('Add', () {
                                 if (_formKey.currentState.validate()) {
-                                  _loginUser(store.state.user);
+                                  _createPuese(store.state.user);
+                                  Navigator.pop(context);
                                 }
                               }, 0.35, const Color.fromRGBO(191, 253, 225, 1)),
                             ),
                             Container(
-                              child: _button('Cancel', () {}, 0.35,
+                              child: _button('Cancel',() => Navigator.pop(context), 0.35,
                                   const Color.fromRGBO(251, 168, 170, 1)),
                             ),
                           ])
@@ -88,12 +89,13 @@ class AddPurseFormState extends State<AddPurseForm> {
         });
   }
 
-  void _loginUser(List<UserModel> user) async {
+  void _createPuese(List<UserModel> user) async {
     _name = _purseNameController.text.toString();
     _balance = _balanseController.text.toString();
     store.dispatch(CreatePursePending(user[0].id, _name, _balance, ''));
     _purseNameController.clear();
     _balanseController.clear();
+    
   }
 
   Widget _button(String text, void Function() func, num width, Color color) {

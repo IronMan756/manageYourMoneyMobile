@@ -1,9 +1,10 @@
-// import 'package:flutter/material.dart';
+
+
 import 'package:manageYourMoneyMobile/common/services/purses.service.dart';
-// import 'package:manageYourMoneyMobile/screens/home.dart';
 import 'package:manageYourMoneyMobile/store/actions/purses.action.dart';
 import 'package:manageYourMoneyMobile/store/models/purse.model.dart';
 import 'package:redux_epics/redux_epics.dart';
+
 import 'package:rxdart/rxdart.dart';
 
 Stream<dynamic> getPursesEpic(
@@ -32,9 +33,10 @@ Stream<dynamic> createPurseEpic(
     Stream<dynamic> actions, EpicStore<dynamic> _store) {
   return actions
       .where((dynamic action) => action is CreatePursePending)
-      .switchMap(( action) =>
-          Stream<dynamic>.fromFuture(createPurse(action)).map((dynamic data) {
-            if (data == false) RemovePurseError(data);
+      .switchMap((dynamic action) =>
+          Stream<dynamic>.fromFuture(createPurse(action as CreatePursePending)).map((dynamic data) {
+            if (data['_id '] == null || data == null) CreatePurseError(data);
             return GetPursesPending();
-          }).doOnError((dynamic error) => RemovePurseError(error)));
+          }));
+          // .doOnError((dynamic error) => CreatePurseError(error)));
 }

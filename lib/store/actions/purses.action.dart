@@ -24,6 +24,11 @@ class CreatePursePending {
   String balance;
   String categoryId;
 }
+class CreatePursesSuccess{}
+class CreatePurseError{
+  CreatePurseError(this.error);
+  dynamic error;
+}
 
 class RemovePurseError {
   RemovePurseError(this.error);
