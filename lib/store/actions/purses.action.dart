@@ -21,6 +21,21 @@ class CreatePursePending {
   CreatePursePending(this.idUser, this.name, this.balance, this.categoryId);
   String idUser;
   String name;
-  int balance;
+  String balance;
   String categoryId;
+}
+class CreatePursesSuccess{}
+class CreatePurseError{
+  CreatePurseError(this.error);
+  dynamic error;
+}
+
+class RemovePurseError {
+  RemovePurseError(this.error);
+  dynamic error;
+}
+
+class RemovePursePending {
+  RemovePursePending(this.id);
+  String id;
 }

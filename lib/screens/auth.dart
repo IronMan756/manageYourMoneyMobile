@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:manageYourMoneyMobile/common/widgets/AuthForms/loginForm.dart';
-import 'package:manageYourMoneyMobile/common/widgets/AuthForms/signUpForm.dart';
+import 'package:manageYourMoneyMobile/common/widgets/auth-forms/loginForm.dart';
+import 'package:manageYourMoneyMobile/common/widgets/auth-forms/signUpForm.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:redux/redux.dart';
 
@@ -19,7 +19,6 @@ class AuthorizationScreen extends StatefulWidget {
 }
 
 class _AuthorizationScreenState extends State<AuthorizationScreen> {
-
   bool showLogin = true;
 
   @override
@@ -31,16 +30,14 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
               backgroundColor: Colors.white,
               body: Container(
                   child: showLogin
-                      ? ListView(
-                        children: <Widget>[
+                      ? ListView(children: <Widget>[
                           const SizedBox(
                             height: 110,
                           ),
-                          const LogInForm(title:'Sign in to continue', height: 0.55),
+                          const LogInForm(
+                              title: 'Sign in to continue', height: 0.55),
                           Padding(
-                              padding: const EdgeInsets.symmetric(
-                                 vertical: 50
-                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 50),
                               child: Center(
                                 child: GestureDetector(
                                   onTap: () {
@@ -60,11 +57,10 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                           const SizedBox(
                             height: 50,
                           ),
-                          const SignUpForm(title:'Sign up to continue', height: 0.8),
+                          const SignUpForm(
+                              title: 'Sign up to continue', height: 0.8),
                           Padding(
-                              padding: const EdgeInsets.symmetric(
-                                 vertical: 20
-                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 20),
                               child: Center(
                                 child: GestureDetector(
                                   onTap: () {
