@@ -46,11 +46,11 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
 
                   return SingleChildScrollView(
                     child: Container(
-                      height: MediaQuery.of(context).size.height ,
+                      height: MediaQuery.of(context).size.height * 0.7,
                       padding:
                           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: const Padding(
-                        padding:  EdgeInsets.fromLTRB(0, 0, 0, 0), 
+                        padding:  EdgeInsets.fromLTRB(5, 5, 5, 5), 
                         child: AddExpenceForm( title: 'New Expense')))); 
 }
   

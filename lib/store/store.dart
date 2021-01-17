@@ -20,6 +20,8 @@ EpicMiddleware<dynamic> removePurseMiddleware =
     EpicMiddleware<dynamic>(removePurseEpic);
 EpicMiddleware<dynamic> createPurseMiddleware =
     EpicMiddleware<dynamic>(createPurseEpic);
+EpicMiddleware<dynamic> createExpenceMiddleware =
+    EpicMiddleware<dynamic>(createExpenceEpic);
 EpicMiddleware<dynamic> getIncomesMiddleware =
     EpicMiddleware<dynamic>(getIncomesEpic);
 EpicMiddleware<dynamic> getExpencesMiddleware =
@@ -32,10 +34,8 @@ EpicMiddleware<dynamic> removeExpenceMiddleware =
     EpicMiddleware<dynamic>(removeExpenceEpic);
 EpicMiddleware<dynamic> removeIncomeMiddleware =
     EpicMiddleware<dynamic>(removeIncomeEpic);
-
-    
-        EpicMiddleware<dynamic> getUserMiddleware =
-        EpicMiddleware<dynamic>(getUserEpic);
+EpicMiddleware<dynamic> getUserMiddleware =
+    EpicMiddleware<dynamic>(getUserEpic);
     
     // EpicMiddleware <dynamic>getUserDedailsMiddleware = EpicMiddleware<dynamic>(getUserDedailsEpic);
     final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -54,7 +54,8 @@ EpicMiddleware<dynamic> removeIncomeMiddleware =
       removeIncomeMiddleware,
       removePurseMiddleware,
       getUserMiddleware,
-      createPurseMiddleware
+      createPurseMiddleware,
+      createExpenceMiddleware
     
       // getUserDedailsMiddleware
     ]);

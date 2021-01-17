@@ -15,7 +15,7 @@ Stream<dynamic> loginEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
           .map( (dynamic token){
             if(token != null){
               return LoginSuccess(token.toString());}
-            return Error;
+            // return Error;
           } )
               // .expand((String token) =>List<String>[
               //       LoginSuccess(token),
@@ -34,6 +34,7 @@ Stream<dynamic> getUserEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) 
           Stream<dynamic>.fromFuture(checkUser())
               .expand(( user) => <dynamic>[
             GetUserSuccess(user as List<UserModel>),
+           
             if (user != null)
             PushReplacementAction(MaterialPageRoute<void>(
                 builder: (BuildContext context) => const HomeScreen()))
@@ -49,5 +50,7 @@ Stream<dynamic> signUpEpic(Stream<dynamic> actions, EpicStore<dynamic> _store) {
           Stream<dynamic>.fromFuture(signUp(action as SignUpPending))
               .expand((dynamic data) => <dynamic>[
                     SignUpSuccess(),
+                //        PushReplacementAction(MaterialPageRoute<void>(
+                // builder: (BuildContext context) => const HomeScreen()))
                   ]));
 }

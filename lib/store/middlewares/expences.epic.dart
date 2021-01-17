@@ -26,3 +26,15 @@ Stream<dynamic> removeExpenceEpic(
             return GetExpencesPending();
           }).doOnError((dynamic error) => RemoveExpenceError(error)));
 }
+
+Stream<dynamic> createExpenceEpic(
+    Stream<dynamic> actions, EpicStore<dynamic> _store) {
+  return actions
+      .where((dynamic action) => action is CreateExpencePending)
+      .switchMap((dynamic action) =>
+          Stream<dynamic>.fromFuture(createExpence(action as CreateExpencePending)).map((data) {
+            // print(data);
+            if (data == false) CreateExpenceError();
+            return GetExpencesPending();
+          }).doOnError((dynamic error) => RemoveExpenceError(error)));
+}
