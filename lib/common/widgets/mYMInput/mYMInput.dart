@@ -10,11 +10,12 @@ class MYMInput extends StatefulWidget {
     this.validator,
     this.errorText,
     this.maxLines,
-    this.keyboardType = TextInputType.text,
-    this.obscureText,
+    this.keyboardType,
+  this. obscureText,
     this.isEnable = true,
     this.hint,
     this.icon,
+    this.numberType,
   }) : super(key: key);
   final TextEditingController myController;
   final String labelText;
@@ -27,6 +28,7 @@ class MYMInput extends StatefulWidget {
   final bool isEnable;
   final String hint;
   final Icon icon;
+  final TextInputType numberType;
 
   @override
   _AuthInputState createState() => _AuthInputState();
@@ -67,10 +69,13 @@ class _AuthInputState extends State<MYMInput> {
           right: 20,
         ),
         child: TextFormField(
+          
             validator: widget.validator,
             controller: widget.myController,
             obscureText: widget.obscureText,
-            style: const TextStyle(fontSize: 20, color: Colors.black),
+            maxLines:widget.maxLines,
+            keyboardType: widget.keyboardType,
+            style: const TextStyle(height: 0.9, fontSize: 20, color: Colors.black,),
             decoration: InputDecoration(
                 hintStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
@@ -83,7 +88,7 @@ class _AuthInputState extends State<MYMInput> {
                   borderSide: BorderSide(width: 0.01),
                 ),
                 prefixIcon: Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    padding: const EdgeInsets.only(left: 5, right: 5),
                     child: IconTheme(
                         data: const IconThemeData(
                           color: Color.fromRGBO(0, 0, 0, 0.85),

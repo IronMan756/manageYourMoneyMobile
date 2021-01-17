@@ -43,15 +43,30 @@ class _PouchScreenState extends State<PouchScreen> {
               onPressed: () => showModalBottomSheet(
                   context: context,
                   useRootNavigator: true,
-                  // isScrollControlled: true,
-                  builder: (BuildContext context) =>
+                  isScrollControlled: true,
+                  builder: (BuildContext context) {
+
+                  return SingleChildScrollView(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.85 ,
+                      padding:
+                          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const Padding(
+                        padding:  EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: AddPurseForm(height: 20, title: 'New Purse'))));
+
+
+}
+                  // (BuildContext context) =>
                       // ignore: avoid_unnecessary_containers
-                      Container(
-                          height: 2000,
-                          child: const Center(
-                            child:
-                                AddPurseForm(height: 2000, title: 'New Purse'),
-                          ))),
+                      // Container(
+                      //     child: const Center(
+                      //       child:
+                      //           AddPurseForm(height: 20, title: 'New Purse'),
+                      //     ))
+                          
+                          
+                          ),
               child: Icon(Icons.add),
               //  store.dispatch(PushAction(
               //     MaterialPageRoute<void>(

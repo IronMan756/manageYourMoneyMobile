@@ -14,20 +14,21 @@ class Expence {
   String userId;
   String purseId;
   int suma;
-  DataCell data;
+  int data;
   String name;
   String description;
 }
 
 class GetExpencesError {}
+class CreateExpenceError {}
 
 class CreateExpencePending {
   CreateExpencePending(this.userId, this.purseId, this.suma, this.data,
       this.name, this.description);
   String userId;
   String purseId;
-  int suma;
-  DataCell data;
+  String suma;
+  int data;
   String name;
   String description;
 }

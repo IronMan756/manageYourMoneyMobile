@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -7,9 +8,7 @@ import 'package:manageYourMoneyMobile/store/actions/purses.action.dart';
 import 'package:manageYourMoneyMobile/store/models/user.model.dart';
 import 'package:manageYourMoneyMobile/store/reducers/reducer.dart';
 import 'package:manageYourMoneyMobile/store/store.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:redux/redux.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class _ViewModel {
   _ViewModel({this.isLoading, this.user});
@@ -42,19 +41,20 @@ class AddPurseFormState extends State<AddPurseForm> {
         builder: (BuildContext context, _ViewModel state) {
           return Form(
               key: _formKey,
+              // ignore: avoid_unnecessary_containers
               child: Container(
-                height: MediaQuery.of(context).size.height * widget.height,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Align(
+                      const Align(
                           child: Text(
-                        "New Purse",
-                        style: const TextStyle(
+                        'New Purse',
+                        style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       )),
                       MYMInput(
                         icon: Icon(Icons.account_balance_wallet ),
+                        maxLines: 1,
                         obscureText: false,
                         myController: _purseNameController,
                         hint: 'Name',
@@ -63,8 +63,8 @@ class AddPurseFormState extends State<AddPurseForm> {
                       ),
                       MYMInput(
                         icon: Icon(Icons.account_balance
-                        // .business_center
                         ),
+                        maxLines: 1,
                         obscureText: false,
                         myController: _balanseController,
                         hint: 'Balance',
@@ -78,7 +78,7 @@ class AddPurseFormState extends State<AddPurseForm> {
                             Container(
                               child: _button('Add', () {
                                 if (_formKey.currentState.validate()) {
-                                  _createPuese(store.state.user);
+                                  _createPurse(store.state.user);
                                   Navigator.pop(context);
                                 }
                               }, 0.35, const Color.fromRGBO(191, 253, 225, 1)),
@@ -92,8 +92,9 @@ class AddPurseFormState extends State<AddPurseForm> {
               ));
         });
   }
-
-  void _createPuese(List<UserModel> user) async {
+ 
+  // ignore: avoid_void_async
+  void _createPurse(List<UserModel> user) async {
     _name = _purseNameController.text.toString();
     _balance = _balanseController.text.toString();
     store.dispatch(CreatePursePending(user[0].id, _name, _balance, ''));

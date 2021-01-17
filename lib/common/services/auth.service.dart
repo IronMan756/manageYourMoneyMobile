@@ -78,19 +78,20 @@ Future<String> logIn(LoginPending action) async {
 Future< List<UserModel>> checkUser() async {
   try{
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        final token = prefs.getString('access_token');
-        Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+        final String token = prefs.getString('access_token');
+        final Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
 
     final http.Response response = await http.get(
         '${getBaseApiURL()}user?email=${decodedToken['email']}&pass=${decodedToken['password']}',
         headers: {'Content-Type': 'application/json',});
-    if (response.statusCode == 200) {
-      print(json.decode(response.body)['data']);
-      return  json.decode(response.body)['data'].map<UserModel>((dynamic item) =>
+    if (response.statusCode == 200) {  
+      print([json.decode(response.body)['data']].map<UserModel>((dynamic item) =>
+              UserModel.fromJson(item as Map<String, dynamic>))
+          .toList() as List<UserModel>);
+      return  [json.decode(response.body)['data']].map<UserModel>((dynamic item) =>
               UserModel.fromJson(item as Map<String, dynamic>))
           .toList() as List<UserModel>;
     }  else {
-  
        toaster.show(message: 'Incorrect Email or Password', color: Colors.red);
       throw Exception('Incorrect Email or Password');
     }
